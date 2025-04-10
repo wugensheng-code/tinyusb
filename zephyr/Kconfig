@@ -1,0 +1,31 @@
+# Copyright (c) 2022 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig TINYUSB
+	bool "tinyusb"
+	help
+	  Use the tinyusb.
+
+if TINYUSB
+
+config TINYUSB_THREAD_STACK_SIZE
+	int "Stack size for tinyusb thread"
+	default 2048
+	help
+	  Stack size for tinyusb thread
+
+config TINYUSB_THREAD_PRIO
+	int "tinyusb thread priority"
+	default 0
+	help
+	  Cooperative priority of tinyusb thread.
+
+
+module = TINYUSB
+module-str = tinyusb
+default-count = 1
+source "subsys/logging/Kconfig.template.log_config"
+
+rsource "Kconfig.renesas"
+
+endif # TINYUSB
